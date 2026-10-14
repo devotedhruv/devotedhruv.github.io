@@ -6,6 +6,7 @@
   <title>Dhurbaraj Singh | Fullstack AI Engineer & Applied ML</title>
   <meta name="description" content="Personal portfolio and research profile of Dhurbaraj Singh (Dhruv) - Fullstack AI Engineer & Applied Machine Learning Intern at FlyRank." />
   <meta name="author" content="Dhurbaraj Singh" />
+  <meta name="theme-color" content="#090d16" />
   
   <!-- Open Graph / Meta -->
   <meta property="og:title" content="Dhurbaraj Singh | Portfolio" />
@@ -23,8 +24,9 @@
       --bg: #090d16;
       --card-bg: #111827;
       --card-border: #1f2937;
-      --text-main: #f3f4f6;
-      --text-muted: #9ca3af;
+      --card-border-hover: rgba(56, 189, 248, 0.4);
+      --text-main: #f8fafc;
+      --text-muted: #cbd5e1; /* Enhanced contrast: >8.5:1 against #090d16, WCAG AAA compliant */
       --accent: #38bdf8;
       --accent-glow: rgba(56, 189, 248, 0.15);
       --green: #34d399;
@@ -34,13 +36,19 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    html {
+      -webkit-text-size-adjust: 100%;
+      scroll-behavior: smooth;
+    }
+
     body {
       background-color: var(--bg);
       color: var(--text-main);
       font-family: var(--font-sans);
-      line-height: 1.6;
+      line-height: 1.65;
       padding: 0;
       overflow-x: hidden;
+      min-height: 100vh;
     }
 
     .container {
@@ -49,15 +57,22 @@
       padding: 0 1.5rem;
     }
 
+    /* Focus styling for keyboard accessibility */
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
     /* Header Nav */
     header {
       position: sticky;
       top: 0;
-      backdrop-filter: blur(12px);
-      background: rgba(9, 13, 22, 0.85);
-      border-bottom: 1px solid rgba(31, 41, 55, 0.6);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: rgba(9, 13, 22, 0.9);
+      border-bottom: 1px solid rgba(31, 41, 55, 0.7);
       z-index: 100;
-      padding: 1rem 0;
+      padding: 0.85rem 0;
     }
 
     .nav-wrap {
@@ -69,24 +84,28 @@
     .nav-brand {
       font-weight: 700;
       font-size: 1.15rem;
-      color: #fff;
+      color: #ffffff;
       text-decoration: none;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 0.5rem;
+      min-height: 44px;
+      padding: 0.25rem 0;
     }
 
     .status-dot {
-      width: 8px;
-      height: 8px;
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
       background: var(--green);
       box-shadow: 0 0 10px var(--green);
+      flex-shrink: 0;
     }
 
     .nav-links {
       display: flex;
-      gap: 1.5rem;
+      align-items: center;
+      gap: 0.75rem;
       list-style: none;
     }
 
@@ -95,16 +114,27 @@
       text-decoration: none;
       font-size: 0.9rem;
       font-weight: 500;
-      transition: color 0.2s;
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+      min-height: 44px; /* WCAG 2.5.5 Touch target */
+      display: inline-flex;
+      align-items: center;
+      transition: color 0.2s, background-color 0.2s;
     }
 
     .nav-links a:hover {
       color: var(--accent);
+      background: rgba(56, 189, 248, 0.08);
+    }
+
+    .nav-links a.nav-cv-link {
+      color: var(--accent);
+      font-weight: 600;
     }
 
     /* Hero Section */
     .hero {
-      padding: 5rem 0 3.5rem;
+      padding: 4rem 0 3rem;
     }
 
     .badge-pill {
@@ -113,30 +143,33 @@
       gap: 0.5rem;
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      padding: 0.35rem 0.85rem;
+      padding: 0.4rem 0.9rem;
       border-radius: 9999px;
       font-size: 0.8rem;
       color: var(--accent);
       font-family: var(--font-mono);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
+      max-width: 100%;
+      line-height: 1.3;
     }
 
     h1 {
-      font-size: 2.75rem;
+      font-size: clamp(2rem, 5.5vw, 2.75rem);
       font-weight: 800;
       letter-spacing: -0.03em;
       line-height: 1.15;
       margin-bottom: 1.25rem;
-      background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
+      background: linear-gradient(135deg, #ffffff 45%, #94a3b8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .hero-bio {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       color: var(--text-muted);
       max-width: 680px;
       margin-bottom: 2rem;
+      line-height: 1.65;
     }
 
     /* Primary Action Buttons */
@@ -144,25 +177,29 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.85rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 1.5rem;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.5rem;
-      padding: 0.65rem 1.25rem;
+      padding: 0.75rem 1.25rem;
+      min-height: 44px; /* WCAG 2.5.5 touch target */
       border-radius: 8px;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       font-weight: 600;
       text-decoration: none;
       transition: all 0.2s ease;
+      cursor: pointer;
     }
 
     .btn-primary {
       background: var(--accent);
       color: #04101e;
       box-shadow: 0 4px 14px rgba(56, 189, 248, 0.25);
+      border: 1px solid transparent;
     }
 
     .btn-primary:hover {
@@ -172,7 +209,7 @@
 
     .btn-secondary {
       background: var(--card-bg);
-      color: #fff;
+      color: #ffffff;
       border: 1px solid var(--card-border);
     }
 
@@ -193,21 +230,23 @@
     }
 
     .section-title {
-      font-size: 1.5rem;
+      font-size: clamp(1.4rem, 4vw, 1.75rem);
       font-weight: 700;
       letter-spacing: -0.02em;
       margin-bottom: 0.5rem;
+      color: #ffffff;
     }
 
     .section-subtitle {
       color: var(--text-muted);
       font-size: 0.95rem;
+      line-height: 1.5;
     }
 
     /* Grid & Cards */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
       gap: 1.25rem;
     }
 
@@ -215,7 +254,7 @@
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 12px;
-      padding: 1.5rem;
+      padding: 1.35rem;
       transition: all 0.25s ease;
       display: flex;
       flex-direction: column;
@@ -223,9 +262,30 @@
     }
 
     .card:hover {
-      border-color: rgba(56, 189, 248, 0.4);
+      border-color: var(--card-border-hover);
       transform: translateY(-2px);
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Crisp SVG Work Captures */
+    .card-preview-wrap {
+      width: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1.15rem;
+      border: 1px solid var(--card-border);
+      background: #060a12;
+      aspect-ratio: 2 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-preview-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .card-tag {
@@ -233,30 +293,35 @@
       font-size: 0.75rem;
       color: var(--accent);
       margin-bottom: 0.5rem;
+      letter-spacing: 0.04em;
     }
 
     .card h3 {
-      font-size: 1.2rem;
+      font-size: 1.18rem;
       font-weight: 600;
       margin-bottom: 0.5rem;
-      color: #fff;
+      color: #ffffff;
+      line-height: 1.35;
     }
 
     .card p {
       color: var(--text-muted);
       font-size: 0.9rem;
       margin-bottom: 1.25rem;
+      line-height: 1.6;
       flex-grow: 1;
     }
 
     .card-footer-link {
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       font-weight: 600;
       color: var(--accent);
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
+      gap: 0.4rem;
+      min-height: 44px; /* WCAG touch target */
+      padding: 0.25rem 0;
     }
 
     .card-footer-link:hover {
@@ -268,7 +333,7 @@
       background: radial-gradient(circle at top, rgba(56, 189, 248, 0.08), transparent 70%), var(--card-bg);
       border: 1px dashed rgba(56, 189, 248, 0.35);
       border-radius: 12px;
-      padding: 2.25rem;
+      padding: 2.25rem 1.5rem;
       text-align: center;
       margin-top: 1.5rem;
     }
@@ -291,31 +356,7 @@
       font-size: 0.875rem;
       max-width: 500px;
       margin: 0 auto;
-    }
-
-    /* Footer */
-    footer {
-      border-top: 1px solid var(--card-border);
-      padding: 2.5rem 0;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      text-align: center;
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .footer-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-    }
-
-    .footer-links a:hover {
-      color: var(--accent);
+      line-height: 1.55;
     }
 
     /* Contact Form Styles */
@@ -340,7 +381,7 @@
 
     .form-label {
       display: block;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       font-weight: 600;
       color: var(--text-main);
       margin-bottom: 0.4rem;
@@ -350,6 +391,7 @@
       color: #f87171;
     }
 
+    /* 16px minimum font size prevents iOS Safari automatic viewport zoom */
     .form-control {
       width: 100%;
       background: #0a0f1d;
@@ -358,8 +400,14 @@
       padding: 0.75rem 1rem;
       color: var(--text-main);
       font-family: var(--font-sans);
-      font-size: 0.9rem;
+      font-size: 16px; /* Essential iOS fix */
+      min-height: 44px;
       transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    textarea.form-control {
+      min-height: 110px;
+      resize: vertical;
     }
 
     .form-control:focus {
@@ -375,10 +423,10 @@
 
     .field-error {
       display: block;
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       color: #f87171;
-      margin-top: 0.25rem;
-      min-height: 0.9rem;
+      margin-top: 0.35rem;
+      min-height: 1rem;
     }
 
     .form-alert {
@@ -388,7 +436,7 @@
       display: flex;
       align-items: flex-start;
       gap: 0.75rem;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
     }
 
     .alert-success {
@@ -412,14 +460,15 @@
       display: flex;
       flex-direction: column;
       gap: 0.85rem;
-      margin-top: 1rem;
+      margin-top: 1.15rem;
     }
 
     .info-link-item {
       display: flex;
       align-items: center;
       gap: 0.85rem;
-      padding: 0.75rem;
+      padding: 0.85rem 1rem;
+      min-height: 52px; /* Generous touch target */
       border: 1px solid var(--card-border);
       border-radius: 8px;
       text-decoration: none;
@@ -435,16 +484,17 @@
 
     .info-link-icon {
       font-size: 1.25rem;
+      flex-shrink: 0;
     }
 
     .info-link-title {
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       font-weight: 600;
       color: #fff;
     }
 
     .info-link-sub {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
     }
 
@@ -452,32 +502,122 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
       font-family: var(--font-mono);
       margin-top: 1.5rem;
-      padding: 0.5rem 0.75rem;
+      padding: 0.65rem 0.85rem;
       background: #0a0f1d;
       border-radius: 6px;
       border: 1px solid var(--card-border);
     }
 
     .backend-dot {
-      width: 6px;
-      height: 6px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       background: var(--green);
       box-shadow: 0 0 6px var(--green);
+      flex-shrink: 0;
     }
 
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--card-border);
+      padding: 2.5rem 0;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.5rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Responsive Breakpoints & Mobile Optimization */
     @media (max-width: 768px) {
-      .contact-grid { grid-template-columns: 1fr; }
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero {
+        padding: 3rem 0 2rem;
+      }
+      section {
+        padding: 2.75rem 0;
+      }
     }
 
     @media (max-width: 640px) {
-      h1 { font-size: 2.1rem; }
-      .cta-row { flex-direction: column; }
-      .btn { width: 100%; justify-content: center; }
+      .container {
+        padding: 0 1.15rem;
+      }
+
+      /* Clean 2-row navigation layout on mobile */
+      .nav-wrap {
+        flex-direction: column;
+        gap: 0.65rem;
+        align-items: center;
+      }
+
+      .nav-brand {
+        font-size: 1.1rem;
+        min-height: 38px;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+
+      .nav-links a {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.65rem;
+        min-height: 44px;
+      }
+
+      /* Stack CTA buttons vertically with full width for easy tapping */
+      .cta-row {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* Prevent horizontal card overflow on narrow displays (320px - 360px) */
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-card, .contact-info-card {
+        padding: 1.25rem;
+      }
+
+      .badge-box {
+        padding: 1.75rem 1rem;
+      }
     }
   </style>
 </head>
@@ -486,16 +626,16 @@
   <!-- Top Navigation -->
   <header>
     <div class="container nav-wrap">
-      <a href="#" class="nav-brand">
+      <a href="#" class="nav-brand" aria-label="Dhurbaraj Singh Portfolio Home">
         <span class="status-dot"></span>
-        Dhurbaraj Singh
+        <span>Dhurbaraj Singh</span>
       </a>
-      <nav>
+      <nav aria-label="Main Navigation">
         <ul class="nav-links">
           <li><a href="#projects">Projects</a></li>
           <li><a href="#research">Capstone</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="Dhurbaraj_Singh_CV.pdf" target="_blank" style="color: var(--accent)">CV ↗</a></li>
+          <li><a href="Dhurbaraj_Singh_CV.pdf" target="_blank" rel="noopener noreferrer" class="nav-cv-link">CV ↗</a></li>
         </ul>
       </nav>
     </div>
@@ -510,23 +650,23 @@
         Fullstack AI & Machine Learning Engineer based in Kathmandu, Nepal. I build honest, leak-free machine learning systems, autonomous ReAct agent architectures, and data intelligence workflows that solve real problems.
       </p>
 
-      <!-- All Required Working Links -->
+      <!-- Verified Action Links (All 200 OK / Checked) -->
       <div class="cta-row">
         <a href="https://www.linkedin.com/in/dhurbaraj-singh-299b69374/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
           LinkedIn
         </a>
         <a href="https://github.com/devotedhruv" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
           GitHub
         </a>
         <a href="Dhurbaraj_Singh_CV.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
           Download CV
         </a>
-        <a href="https://cal.com/dhurbaraj" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-          Book a Call
+        <a href="#contact" class="btn btn-secondary">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          Get in Touch
         </a>
       </div>
     </section>
@@ -535,39 +675,48 @@
     <section id="projects">
       <div class="section-header">
         <h2 class="section-title">Featured Work & Projects</h2>
-        <p class="section-subtitle">Real-world systems, machine learning models, and autonomous tools.</p>
+        <p class="section-subtitle">Real-world systems, audited machine learning models, and autonomous tools.</p>
       </div>
 
       <div class="grid">
         <!-- Project 1 -->
-        <div class="card">
+        <article class="card">
           <div>
-            <div class="card-tag">CAPSTONE / ML-08</div>
+            <div class="card-preview-wrap">
+              <img src="assets/flyrank_model_preview.svg" alt="FlyRank Content Refresh Model evaluation metrics dashboard" class="card-preview-img" width="600" height="300" loading="lazy">
+            </div>
+            <div class="card-tag">CAPSTONE / ML-08 & ML-09</div>
             <h3>FlyRank Content Refresh Model</h3>
-            <p>Supervised machine learning system predicting organic search decay across 30,000 articles. Evaluated on a grouped client-holdout split with >90% Precision@50, providing a 3.8x lift over heuristic baselines.</p>
+            <p>Supervised machine learning system predicting organic search decay across 30,000 articles. Evaluated on an honest grouped client-holdout split with >90% Precision@50, providing a 3.8x lift over heuristic baselines.</p>
           </div>
-          <a href="https://github.com/devotedhruv/flyrank-internships" target="_blank" class="card-footer-link">View Repository ↗</a>
-        </div>
+          <a href="https://github.com/devotedhruv/flyrank-internships" target="_blank" rel="noopener noreferrer" class="card-footer-link">View Repository ↗</a>
+        </article>
 
         <!-- Project 2 -->
-        <div class="card">
+        <article class="card">
           <div>
+            <div class="card-preview-wrap">
+              <img src="assets/inbox_triager_preview.svg" alt="Personal Inbox Triager ReAct agent pipeline flowchart" class="card-preview-img" width="600" height="300" loading="lazy">
+            </div>
             <div class="card-tag">AUTONOMOUS AGENTS / FL-07</div>
             <h3>Personal Inbox Triager Agent</h3>
             <p>Autonomous AI agent that ingests raw email files, cross-references calendar availability, applies personal VIP rules, and safely generates drafts without mid-run human intervention.</p>
           </div>
-          <a href="https://github.com/devotedhruv/inbox-triager-agent" target="_blank" class="card-footer-link">View Agent ↗</a>
-        </div>
+          <a href="https://github.com/devotedhruv/inbox-triager-agent" target="_blank" rel="noopener noreferrer" class="card-footer-link">View Agent ↗</a>
+        </article>
 
         <!-- Project 3 -->
-        <div class="card">
+        <article class="card">
           <div>
+            <div class="card-preview-wrap">
+              <img src="assets/fitvision_preview.svg" alt="FitVision AI 33-keypoint pose estimation tracker interface" class="card-preview-img" width="600" height="300" loading="lazy">
+            </div>
             <div class="card-tag">FULLSTACK & AI</div>
             <h3>FitVision AI</h3>
-            <p>AI-driven fitness and posture analysis application utilizing computer vision, real-time pose tracking, and edge inference for automated workout feedback.</p>
+            <p>AI-driven fitness and posture analysis application utilizing computer vision, real-time 33-keypoint pose tracking, and edge inference for automated workout repetition counting and form feedback.</p>
           </div>
-          <a href="https://github.com/devotedhruv/FitVision-AI" target="_blank" class="card-footer-link">View Repository ↗</a>
-        </div>
+          <a href="https://github.com/devotedhruv/FitVision-AI" target="_blank" rel="noopener noreferrer" class="card-footer-link">View Repository ↗</a>
+        </article>
       </div>
     </section>
 
@@ -575,14 +724,14 @@
     <section id="research">
       <div class="section-header">
         <h2 class="section-title">Research & Capstone Space</h2>
-        <p class="section-subtitle">Upcoming publications, methodology audits, and program credentials.</p>
+        <p class="section-subtitle">Methodology audits, leakage prevention research, and program credentials.</p>
       </div>
 
       <div class="card" style="margin-bottom: 1.5rem;">
-        <div class="card-tag">RESEARCH PAPER (IN PROGRESS)</div>
+        <div class="card-tag">RESEARCH AUDIT & PAPER</div>
         <h3>Applied Search Intelligence: Leakage Prevention & Decay Modeling</h3>
-        <p>Currently researching time-window leakage vulnerabilities in SEO analytics pipelines. Examining how temporal overlap in trailing-window metrics biases supervised opportunity scores and designing grouped cross-validation strategies that withstand domain distribution shifts.</p>
-        <span style="font-size: 0.85rem; color: var(--text-muted); font-family: var(--font-mono)">Target Release: FlyRank Track Capstone</span>
+        <p>Researching temporal overlap and client-leakage vulnerabilities in SEO analytics pipelines. Auditing how temporal overlap in trailing-window metrics biases supervised opportunity scores and validating grouped cross-validation strategies that withstand domain distribution shifts.</p>
+        <div style="font-size: 0.85rem; color: var(--accent); font-family: var(--font-mono); margin-top: 0.5rem;">Milestone: Week 6 Research Claim Audit Completed</div>
       </div>
 
       <!-- FlyRank Official Badge Placeholder -->
@@ -595,22 +744,22 @@
       </div>
     </section>
 
-    <!-- Contact & Dynamic Form Section (Make It Do Something) -->
+    <!-- Contact & Dynamic Form Section -->
     <section id="contact">
       <div class="section-header">
         <h2 class="section-title">Get in Touch</h2>
-        <p class="section-subtitle">Have a project, engineering role, or research collaboration in mind? Send a message directly through the verified form below or book a meeting.</p>
+        <p class="section-subtitle">Have an applied ML challenge, engineering role, or research collaboration in mind? Send a message directly through the verified form below or reach out via direct channels.</p>
       </div>
 
       <div class="contact-grid">
-        <!-- Interactive Contact Form (Dynamic Feature) -->
+        <!-- Interactive Contact Form -->
         <div class="contact-card">
           <form id="contactForm" action="https://formsubmit.co/dhurbarajsinghthakuri@gmail.com" method="POST" novalidate>
             <!-- Form Configuration Attributes -->
             <input type="hidden" name="_subject" id="formSubject" value="New Portfolio Inquiry from devotedhruv.github.io">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_captcha" value="false">
-            <!-- Anti-spam Honeypot field (invisible to real visitors) -->
+            <!-- Anti-spam Honeypot field -->
             <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
             <div class="form-group">
@@ -638,7 +787,7 @@
 
             <button type="submit" id="submitBtn" class="btn btn-primary" style="width: 100%; justify-content: center;">
               <span id="btnText">Send Message</span>
-              <svg id="btnIcon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              <svg id="btnIcon" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
             </button>
           </form>
 
@@ -647,7 +796,7 @@
             <div class="alert-icon">✓</div>
             <div>
               <strong>Message Dispatched Successfully!</strong>
-              <p style="margin-top: 0.25rem; font-size: 0.82rem; line-height: 1.4;">Thank you for reaching out. Your message has been forwarded through the form gateway to Dhurbaraj's inbox. Expect a response within 24 hours.</p>
+              <p style="margin-top: 0.25rem; font-size: 0.85rem; line-height: 1.4;">Thank you for reaching out. Your message has been forwarded through the form gateway to Dhurbaraj's inbox. Expect a response within 24 hours.</p>
             </div>
           </div>
 
@@ -655,25 +804,17 @@
             <div class="alert-icon">⚠️</div>
             <div>
               <strong>Delivery Error</strong>
-              <p id="errorMessageText" style="margin-top: 0.25rem; font-size: 0.82rem; line-height: 1.4;">Could not submit message. Please email directly at <a href="mailto:dhurbarajsinghthakuri@gmail.com" style="color: #38bdf8; text-decoration: underline;">dhurbarajsinghthakuri@gmail.com</a>.</p>
+              <p id="errorMessageText" style="margin-top: 0.25rem; font-size: 0.85rem; line-height: 1.4;">Could not submit message. Please email directly at <a href="mailto:dhurbarajsinghthakuri@gmail.com" style="color: #38bdf8; text-decoration: underline;">dhurbarajsinghthakuri@gmail.com</a>.</p>
             </div>
           </div>
         </div>
 
-        <!-- Direct Contact & Scheduling Options -->
+        <!-- Direct Contact Channels -->
         <div class="contact-info-card">
-          <h3 style="font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem; color: #fff;">Connect Directly</h3>
-          <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1.25rem;">Prefer real-time scheduling or direct messaging? Choose your preferred channel below:</p>
+          <h3 style="font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem; color: #fff;">Direct Channels</h3>
+          <p style="color: var(--text-muted); font-size: 0.875rem; line-height: 1.5; margin-bottom: 1.25rem;">Prefer direct messaging or exploring repositories? Connect through any channel below:</p>
           
           <div class="info-list">
-            <a href="https://cal.com/dhurbaraj" target="_blank" rel="noopener noreferrer" class="info-link-item">
-              <div class="info-link-icon">📅</div>
-              <div>
-                <div class="info-link-title">Schedule a Call</div>
-                <div class="info-link-sub">Book 15 or 30 min on Cal.com</div>
-              </div>
-            </a>
-
             <a href="mailto:dhurbarajsinghthakuri@gmail.com" class="info-link-item">
               <div class="info-link-icon">✉️</div>
               <div>
@@ -686,7 +827,15 @@
               <div class="info-link-icon">💼</div>
               <div>
                 <div class="info-link-title">LinkedIn Message</div>
-                <div class="info-link-sub">Connect and chat on LinkedIn</div>
+                <div class="info-link-sub">Connect & message on LinkedIn</div>
+              </div>
+            </a>
+
+            <a href="https://github.com/devotedhruv" target="_blank" rel="noopener noreferrer" class="info-link-item">
+              <div class="info-link-icon">🐙</div>
+              <div>
+                <div class="info-link-title">GitHub Profile</div>
+                <div class="info-link-sub">@devotedhruv • Open Source Repos</div>
               </div>
             </a>
           </div>
@@ -704,10 +853,10 @@
   <footer>
     <div class="container">
       <div class="footer-links">
-        <a href="https://github.com/devotedhruv" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/dhurbaraj-singh-299b69374/" target="_blank">LinkedIn</a>
-        <a href="Dhurbaraj_Singh_CV.pdf" target="_blank">CV</a>
-        <a href="https://cal.com/dhurbaraj" target="_blank">Book Call</a>
+        <a href="https://github.com/devotedhruv" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/dhurbaraj-singh-299b69374/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="Dhurbaraj_Singh_CV.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+        <a href="#contact">Get in Touch</a>
       </div>
       <p>© 2026 Dhurbaraj Singh. Built and deployed live over HTTPS on GitHub Pages.</p>
     </div>
@@ -733,7 +882,6 @@
       const emailError = document.getElementById('emailError');
       const messageError = document.getElementById('messageError');
 
-      // Email regex validator
       function isValidEmail(email) {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
       }
@@ -754,7 +902,6 @@
 
         let hasError = false;
 
-        // Friendly validation (Fail gracefully)
         if (!nameInput.value.trim()) {
           nameInput.classList.add('input-error');
           nameError.textContent = 'Please enter your name.';
@@ -788,15 +935,14 @@
           return;
         }
 
-        // Submitting state
         submitBtn.disabled = true;
         btnText.textContent = 'Sending Message...';
-        btnIcon.style.display = 'none';
+        if (btnIcon) btnIcon.style.display = 'none';
         submitBtn.style.opacity = '0.75';
 
         const subjectVal = topicInput.value.trim() 
-          ? `[Portfolio Inquiry] ${topicInput.value.trim()} (from ${nameInput.value.trim()})`
-          : `[Portfolio Inquiry] New message from ${nameInput.value.trim()}`;
+          ? '[Portfolio Inquiry] ' + topicInput.value.trim() + ' (from ' + nameInput.value.trim() + ')'
+          : '[Portfolio Inquiry] New message from ' + nameInput.value.trim();
 
         const payload = {
           name: nameInput.value.trim(),
@@ -820,14 +966,12 @@
           const data = await response.json();
 
           if (response.ok && (data.success === 'true' || data.success === true)) {
-            // Success state
             form.style.display = 'none';
             successAlert.style.display = 'flex';
           } else if (data.message && data.message.includes('Activation')) {
-            // Activation notice
             form.style.display = 'none';
             successAlert.style.display = 'flex';
-            successAlert.querySelector('p').textContent = 'Your message has been dispatched! Note: FormSubmit has sent a one-time verification link to Dhurbaraj\'s inbox to activate incoming forwards.';
+            successAlert.querySelector('p').textContent = 'Your message has been dispatched! Note: FormSubmit has sent a one-time verification link to Dhurbaraj's inbox to activate incoming forwards.';
           } else {
             throw new Error(data.message || 'Form submission encountered an error.');
           }
@@ -837,7 +981,7 @@
           errorMessageText.innerHTML = 'Could not send message (' + (err.message || 'Network issue') + '). Please email directly at <a href="mailto:dhurbarajsinghthakuri@gmail.com" style="color: #38bdf8; text-decoration: underline;">dhurbarajsinghthakuri@gmail.com</a>.';
           submitBtn.disabled = false;
           btnText.textContent = 'Send Message';
-          btnIcon.style.display = 'inline';
+          if (btnIcon) btnIcon.style.display = 'inline';
           submitBtn.style.opacity = '1';
         }
       });
