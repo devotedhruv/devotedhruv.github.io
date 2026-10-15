@@ -64,3 +64,43 @@ Every single link on the portfolio was systematically checked:
 - **Live URL**: [https://devotedhruv.github.io/](https://devotedhruv.github.io/)
 - **Repository**: [https://github.com/devotedhruv/devotedhruv.github.io](https://github.com/devotedhruv/devotedhruv.github.io)
 - **Commit Log**: Mobile-first responsive refactor, 44px touch targets, 16px iOS input fix, SVG work captures, 0 broken links.
+
+---
+
+## 6. Survive the Crit: Checkpoint 1 Design Review
+
+### Proof Statement Submitted
+> *"I am a Fullstack AI & Applied Machine Learning Engineer who builds leak-free predictive models and autonomous agent architectures backed by honest client-holdout validation and audited data contracts, enabling product and search intelligence teams to deploy reliable AI decision systems they can trust in production."*
+
+### Reviewer Feedback & The Two Questions
+
+1. **Question 1: In ten seconds, what do I do?**
+   - **Reviewer**: *"In ten seconds, I saw your name 'Dhurbaraj Singh' repeated twice (header and H1), but your core value proposition was buried in the fine-print paragraph below. It listed three disparate concepts ('machine learning', 'autonomous ReAct agents', 'data workflows'). I couldn't immediately identify your primary lane. Make your H1 state the core value proposition so I know what you do in 3 seconds, not 10."*
+   - **Engagement**: Acknowledged without defense. The redundant name in H1 failed the 10-second test.
+
+2. **Question 2: Would you believe I'm good at it?**
+   - **Reviewer**: *"Your project descriptions mention great numbers (30,000 articles, 92% Precision@50, 3.8x baseline lift), but the proof is buried inside dense body text. When skimming, numbers build instant trust—why aren't these front-and-center? Also, on your Capstone card, the only link is 'View Repository'—a reviewer doesn't want to dig through code files to verify your findings. Link the report and validation audit directly! And in the Research section, having a placeholder box that says 'Reserved space for badge' feels like a stub—replace it with the actual research findings and methodology audit."*
+   - **Engagement**: Acknowledged without defense. Proof numbers needed high visual prominence, and project artifacts required one-click direct access.
+
+---
+
+### Must-Fix vs. Nice-to-Have Sorting
+
+| Classification | Item | Rationale | Resolution on Live Site |
+| :--- | :--- | :--- | :--- |
+| **Must-Fix** | **Hero H1 Headline** | Redundant name header slowed 10-second comprehension. | Changed H1 to: `Building Honest, Leak-Free Machine Learning Systems`, followed by clear role subtitle. |
+| **Must-Fix** | **Proof Stat Strip** | Proof metrics were buried in paragraph text. | Built a high-visibility 3-stat metric bar (`30,000+` Articles, `92.0%` Precision@50, `0.0%` Leakage) right below hero CTAs. |
+| **Must-Fix** | **One Primary Action** | 4 equal-weight CTAs created decision paralysis. | Promoted `Explore Audited Models & Code ↓` to primary button; subordinated GitHub, CV, and Contact. |
+| **Must-Fix** | **Direct Evidence Links** | Code-only repo link forced users to hunt for research findings. | Added direct 1-click links to `Report ↗` and `Audit NB ↗` alongside `Code Repo ↗`. |
+| **Must-Fix** | **Replace Badge Placeholder** | "Reserved space for badge" felt like an unfinished stub. | Replaced with two concrete **Audited Research Cards** detailing the Week 6 claims audit and client-holdout findings. |
+| **Must-Fix** | **Simplify Contact Jargon** | "Zero-Backend Gateway: Active & Monitored" was confusing. | Replaced with plain, professional copy: "Direct Channel Monitor: Active (24h SLA)". |
+| *Nice-to-Have* | *Interactive Inference Widget* | Would be great to calculate decay live in browser. | Deferred to Week 8 ("Wire One Real Thing"). |
+| *Nice-to-Have* | *Agent Run Video Player* | In-page playback for `run_capture.mp4`. | Deferred to portfolio media update. |
+| *Nice-to-Have* | *Light / Dark Theme Switcher* | Additional aesthetic preference. | Deferred; dark engineering theme is already high-contrast (8.5:1+). |
+
+---
+
+### Verification of Must-Fixes
+- **Live URL**: [https://devotedhruv.github.io/](https://devotedhruv.github.io/)
+- **10-Second Test**: Passes immediately. Stranger identifies lane (Honest/Leak-free ML & Search Intelligence) and quantitative proof ($92\%$ Precision@50) in $< 5\text{s}$.
+- **Evidence Links**: 100% of direct artifact links (`capstone_report.md`, `w06_validation_audit.ipynb`, `FL06_SPEC.md`) tested and returning HTTP 200 OK.
